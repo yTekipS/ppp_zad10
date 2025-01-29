@@ -45,7 +45,7 @@ public:
 
 class Kopula {
 protected:
-	float Promien = 1;
+	float Promien=1;
 public:
 	float Pole();
 	Kopula() {}
@@ -56,7 +56,7 @@ Kopula::Kopula(float a) {
 	this->Promien = a;
 }
 float Kopula::Pole() {
-	return 2 * 3.14 * pow(Promien, 2);
+	return 2 * 3.14 * pow(Promien,2);
 }
 
 class Farba : public Kopula{
@@ -71,8 +71,9 @@ public:
 		this->cenaNaLitr = c;
 	}
 	float Cena() {
+		Kopula k1(1);
 		cout << color << "\n";
-		return cenaNaLitr * (Pole() / zuzycie);
+		return cenaNaLitr * ( k1.Pole()/ zuzycie);
 	}
 };
 
@@ -86,8 +87,7 @@ int main() {
 	cout << b2.Objetosc() << "\n";
 	cout << b2.PolePowierzchni() << "\n";
 	*/
-	Kopula k1(1);
-	cout << k1.Pole() << " ";
+
 	Farba f1("Bialy", 1, 10);
 	cout << f1.Cena();
 }
