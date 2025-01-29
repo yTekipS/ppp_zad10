@@ -1,8 +1,7 @@
 ﻿#include <iostream>
 
 using namespace std;
-
-
+/*
 class Prostokat{
 protected:
 	float Pole(float bokA, float bokB) {
@@ -25,12 +24,12 @@ public:
 		this->krawedzB = b;
 		this->krawedzC = c;
 	}
-	Prostopadloscian() {}
+	Prostopadloscian(){}
 };
 
-class Szescain : public Prostopadloscian {
+class Szescian : public Prostopadloscian {
 private:
-	float a;
+	float a=1;
 public:
 	float PolePowierzchni() {
 		return 6 * (Pole(a, a));
@@ -38,20 +37,57 @@ public:
 	float Objetosc() {
 		return pow(a, 3);
 	}
-	Szescain(float a) {
+	Szescian(float a) {
 		this->a = a;
 	}
 };
+*/
 
-int main() {
+class Kopula {
+protected:
+	float Promien = 1;
+public:
+	float Pole();
+	Kopula() {}
+	Kopula(float a);
+};
 
-	Prostopadloscian b1(2, 3, 4);
+Kopula::Kopula(float a) {
+	this->Promien = a;
+}
+float Kopula::Pole() {
+	return 2 * 3.14 * pow(Promien, 2);
+}
+
+class Farba : public Kopula{
+protected:
+	string color;
+	float zuzycie;
+	float cenaNaLitr;
+public:
+	Farba(string kolor, float z, float c) {
+		this->color = kolor;
+		this->zuzycie = z;
+		this->cenaNaLitr = c;
+	}
+	float Cena() {
+		cout << color << "\n";
+		return cenaNaLitr * (Pole() / zuzycie);
+	}
+};
+
+int main() {	
+
+	/*Prostopadloscian b1(2, 3, 4);
 	cout << b1.Objetosc() << "\n";
 	cout << b1.PolePowierzchni() << "\n";
 
-	Szescain b2(3);
+	Szescian b2(3);
 	cout << b2.Objetosc() << "\n";
 	cout << b2.PolePowierzchni() << "\n";
-
-
+	*/
+	Kopula k1(1);
+	cout << k1.Pole() << " ";
+	Farba f1("Bialy", 1, 10);
+	cout << f1.Cena();
 }
